@@ -8,7 +8,7 @@ function Question() {
 
   return (
     <div>
-      <div>Question tbi</div>
+      <p>{questions[currentQuestion].question}</p>
       {questions[currentQuestion].type === "multiple" ? (
         <Answers />
       ) : (
