@@ -1,13 +1,12 @@
+import { useContext } from "react";
+import { QuizContext } from "./QuizContext";
+import Quiz from "./Quiz";
+import QuizOptions from "./QuizOptions";
+
 function MainContent() {
-  return (
-    <main>
-      <ul>
-        <li>content</li>
-        <li>more content</li>
-        <li>look at all this content</li>
-      </ul>
-    </main>
-  );
+  const qC = useContext(QuizContext);
+
+  return <main>{qC!.inQuiz ? <Quiz /> : <QuizOptions />}</main>;
 }
 
 export default MainContent;
