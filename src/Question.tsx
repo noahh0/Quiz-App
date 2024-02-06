@@ -4,12 +4,12 @@ import Answers from "./Answers";
 import TrueOrFalse from "./TrueOrFalse";
 
 function Question() {
-  const qC = useContext(QuizContext);
+  const { questions, currentQuestion } = useContext(QuizContext)!;
 
   return (
     <div>
       <div>Question tbi</div>
-      {qC!.questions[qC!.currentQuestion].type === "multiple" ? (
+      {questions[currentQuestion].type === "multiple" ? (
         <Answers />
       ) : (
         <TrueOrFalse />
