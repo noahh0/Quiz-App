@@ -11,7 +11,7 @@ function Answers() {
   return (
     <div>
       {answers.map((answer) => (
-        <p>{answer}</p>
+        <button>{answer}</button>
       ))}
     </div>
   );
