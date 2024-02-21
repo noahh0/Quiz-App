@@ -3,6 +3,7 @@ import { QuizContext } from "./QuizContext";
 import Answers from "./Answers";
 import TrueOrFalse from "./TrueOrFalse";
 
+// Question component with current question and answers
 function Question() {
   const { questions, currentQuestion } = useContext(QuizContext)!;
 

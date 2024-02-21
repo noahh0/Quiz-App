@@ -1,3 +1,4 @@
+// Site header component
 function Header() {
   return (
     <header>

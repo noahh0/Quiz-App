@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { QuizContext } from "./QuizContext";
 import Question from "./Question";
 
+// Quiz component with current question and quiz info
 function Quiz() {
   const { questions, currentQuestion, score, timePerQuestion } =
     useContext(QuizContext)!;
 
+  // Timer for each question if time limit is set
   let timeRemaining: number | null = timePerQuestion;
   let timer: ReturnType<typeof setInterval>;
   if (timeRemaining !== null) {

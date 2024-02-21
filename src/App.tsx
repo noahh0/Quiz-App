@@ -3,6 +3,7 @@ import QuizProvider from "./QuizContext";
 import MainContent from "./MainContent.tsx";
 import Footer from "./Footer.tsx";
 
+// Main App component
 function App() {
   return (
     <>

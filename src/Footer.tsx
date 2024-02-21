@@ -1,3 +1,4 @@
+// Site footer component
 function Footer() {
   return (
     <footer>

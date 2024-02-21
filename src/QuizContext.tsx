@@ -1,5 +1,6 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 
+// Question type returned by API
 interface Question {
   type: string;
   difficulty: string;
@@ -26,6 +27,7 @@ interface QuizContext {
 
 const QuizContext = React.createContext<QuizContext | null>(null);
 
+// Context provider for quiz state
 function QuizProvider({ children }: { children: React.ReactNode }) {
   const [inQuiz, setInQuiz] = useState<boolean>(false);
   const [questions, setQuestions] = useState<Question[]>([]);
