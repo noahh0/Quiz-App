@@ -8,6 +8,20 @@ function QuizOptions() {
   const [difficulty, setDifficulty] = useState("");
   const [type, setType] = useState("");
 
+  // Generate URL to fetch questions from API
+  const generateAPIQuery = (): string => {
+    return `https://opentdb.com/api.php?amount=${numberQuestions}${
+      category ? `&category=${category}` : ""
+    }${difficulty ? `&difficulty=${difficulty}` : ""}${
+      type ? `&type=${type}` : ""
+    }`;
+  };
+
+  // Create and log an API URL
+  const testAPIGeneration = () => {
+    console.log(generateAPIQuery());
+  };
+
   return (
     <div>
       <form>
@@ -85,7 +99,14 @@ function QuizOptions() {
           <option value="boolean">True / False</option>
         </select>
 
-        <button onClick={() => {}}>Start Quiz</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            testAPIGeneration();
+          }}
+        >
+          Start Quiz
+        </button>
       </form>
     </div>
   );
