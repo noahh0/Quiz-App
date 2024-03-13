@@ -3,7 +3,16 @@ import { QuizContext } from "./QuizContext";
 
 // Answers component with clickable answer buttons
 function Answers() {
-  const { questions, currentQuestion } = useContext(QuizContext)!;
+  const { questions, currentQuestion, setCurrentQuestion, score, setScore } =
+    useContext(QuizContext)!;
+
+  // Update score and move to next question
+  const processAnswer = (answer: string) => {
+    if (answer === questions[currentQuestion].correct_answer) {
+      setScore(score + 1);
+    }
+    setCurrentQuestion(currentQuestion + 1);
+  };
 
   // Combine correct and incorrect answers, then shuffle them
   let answers: string[] = questions[currentQuestion].incorrect_answers.concat(
@@ -14,7 +23,15 @@ function Answers() {
   return (
     <div>
       {answers.map((answer) => (
-        <button>{answer}</button>
+        <button
+          key={answer}
+          onClick={(e) => {
+            e.preventDefault();
+            processAnswer(answer);
+          }}
+        >
+          {answer}
+        </button>
       ))}
     </div>
   );
