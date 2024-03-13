@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { QuizContext } from "./QuizContext";
 
 // Quiz Options component page with form inputs
 function QuizOptions() {
+  const { setInQuiz, setQuestions } = useContext(QuizContext)!;
+
   // State for quiz options
   const [numberQuestions, setNumberQuestions] = useState(10);
   const [category, setCategory] = useState("");
@@ -17,9 +20,22 @@ function QuizOptions() {
     }`;
   };
 
-  // Create and log an API URL
-  const testAPIGeneration = () => {
-    console.log(generateAPIQuery());
+  // Fetch questions from API and start the quiz if data fetched successfully
+  const startQuiz = () => {
+    fetch(generateAPIQuery())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error fetching questions");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setQuestions(data.results);
+        setInQuiz(true);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -102,7 +118,7 @@ function QuizOptions() {
         <button
           onClick={(e) => {
             e.preventDefault();
-            testAPIGeneration();
+            startQuiz();
           }}
         >
           Start Quiz
