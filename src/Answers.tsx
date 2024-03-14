@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { QuizContext } from "./QuizContext";
 
 // Answers component with clickable answer buttons
@@ -25,10 +25,12 @@ function Answers() {
   };
 
   // Combine correct and incorrect answers, then shuffle them
-  let answers: string[] = questions[currentQuestion].incorrect_answers.concat(
-    questions[currentQuestion].correct_answer
-  );
-  answers = answers.sort(() => Math.random() - 0.5);
+  const answers: string[] = useMemo(() => {
+    const tempAnswers = questions[currentQuestion].incorrect_answers.concat(
+      questions[currentQuestion].correct_answer
+    );
+    return tempAnswers.sort(() => Math.random() - 0.5);
+  }, [questions, currentQuestion]);
 
   return (
     <div>

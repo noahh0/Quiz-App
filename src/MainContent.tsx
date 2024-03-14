@@ -8,7 +8,7 @@ import QuizResults from "./QuizResults";
 function MainContent() {
   const { siteState } = useContext(QuizContext)!;
 
-  // Renders the quiz or options page as needed
+  // Renders the quiz, options, or results page as needed
   return (
     <main>
       {(() => {

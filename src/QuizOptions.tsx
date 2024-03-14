@@ -3,13 +3,15 @@ import { QuizContext } from "./QuizContext";
 
 // Quiz Options component page with form inputs
 function QuizOptions() {
-  const { setSiteState, setQuestions } = useContext(QuizContext)!;
+  const { setSiteState, setQuestions, setTimePerQuestion } =
+    useContext(QuizContext)!;
 
   // State for quiz options
-  const [numberQuestions, setNumberQuestions] = useState(10);
-  const [category, setCategory] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [type, setType] = useState("");
+  const [numberQuestions, setNumberQuestions] = useState<number>(10);
+  const [category, setCategory] = useState<string>("");
+  const [difficulty, setDifficulty] = useState<string>("");
+  const [type, setType] = useState<string>("");
+  const [time, setTime] = useState<string>("");
 
   // Generate URL to fetch questions from API
   const generateAPIQuery = (): string => {
@@ -32,6 +34,7 @@ function QuizOptions() {
       .then((data) => {
         setQuestions(data.results);
         setSiteState("quiz");
+        setTimePerQuestion(time ? parseInt(time) : null);
       })
       .catch((error) => {
         console.error(error);
@@ -113,6 +116,21 @@ function QuizOptions() {
           <option value="">Any Type</option>
           <option value="multiple">Multiple Choice</option>
           <option value="boolean">True / False</option>
+        </select>
+
+        <label htmlFor="time-per-question-field">Time per Question:</label>
+        <select
+          name="time-per-question-field"
+          value={time}
+          onChange={(e) => {
+            setTime(e.target.value);
+          }}
+        >
+          <option value="">No Limit</option>
+          <option value="10">10 seconds</option>
+          <option value="20">20 seconds</option>
+          <option value="30">30 seconds</option>
+          <option value="60">1 minute</option>
         </select>
 
         <button
