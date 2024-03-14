@@ -3,7 +3,7 @@ import { QuizContext } from "./QuizContext";
 
 // Quiz Options component page with form inputs
 function QuizOptions() {
-  const { setInQuiz, setQuestions } = useContext(QuizContext)!;
+  const { setSiteState, setQuestions } = useContext(QuizContext)!;
 
   // State for quiz options
   const [numberQuestions, setNumberQuestions] = useState(10);
@@ -31,7 +31,7 @@ function QuizOptions() {
       })
       .then((data) => {
         setQuestions(data.results);
-        setInQuiz(true);
+        setSiteState("quiz");
       })
       .catch((error) => {
         console.error(error);

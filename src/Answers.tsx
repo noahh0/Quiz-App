@@ -3,15 +3,25 @@ import { QuizContext } from "./QuizContext";
 
 // Answers component with clickable answer buttons
 function Answers() {
-  const { questions, currentQuestion, setCurrentQuestion, score, setScore } =
-    useContext(QuizContext)!;
+  const {
+    setSiteState,
+    questions,
+    currentQuestion,
+    setCurrentQuestion,
+    score,
+    setScore,
+  } = useContext(QuizContext)!;
 
   // Update score and move to next question
   const processAnswer = (answer: string) => {
     if (answer === questions[currentQuestion].correct_answer) {
       setScore(score + 1);
     }
-    setCurrentQuestion(currentQuestion + 1);
+    if (currentQuestion === questions.length - 1) {
+      setSiteState("results");
+    } else {
+      setCurrentQuestion(currentQuestion + 1);
+    }
   };
 
   // Combine correct and incorrect answers, then shuffle them

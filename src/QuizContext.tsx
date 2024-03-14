@@ -11,8 +11,8 @@ interface Question {
 }
 
 interface QuizContext {
-  inQuiz: boolean;
-  setInQuiz: Dispatch<SetStateAction<boolean>>;
+  siteState: string;
+  setSiteState: Dispatch<SetStateAction<string>>;
   questions: Question[];
   setQuestions: Dispatch<SetStateAction<Question[]>>;
   currentQuestion: number;
@@ -29,7 +29,7 @@ const QuizContext = React.createContext<QuizContext | null>(null);
 
 // Context provider for quiz state
 function QuizProvider({ children }: { children: React.ReactNode }) {
-  const [inQuiz, setInQuiz] = useState<boolean>(false);
+  const [siteState, setSiteState] = useState<string>("options");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
@@ -39,8 +39,8 @@ function QuizProvider({ children }: { children: React.ReactNode }) {
   return (
     <QuizContext.Provider
       value={{
-        inQuiz,
-        setInQuiz,
+        siteState,
+        setSiteState,
         questions,
         setQuestions,
         currentQuestion,
