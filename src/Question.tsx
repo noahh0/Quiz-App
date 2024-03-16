@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import he from "he";
 import { QuizContext } from "./QuizContext";
 import Answers from "./Answers";
 import TrueOrFalse from "./TrueOrFalse";
@@ -9,7 +10,7 @@ function Question() {
 
   return (
     <div>
-      <p>{questions[currentQuestion].question}</p>
+      <p>{he.unescape(questions[currentQuestion].question)}</p>
       {questions[currentQuestion].type === "multiple" ? (
         <Answers />
       ) : (

@@ -1,4 +1,5 @@
 import { useContext, useMemo } from "react";
+import he from "he";
 import { QuizContext } from "./QuizContext";
 
 // Answers component with clickable answer buttons
@@ -42,7 +43,7 @@ function Answers() {
             processAnswer(answer);
           }}
         >
-          {answer}
+          {he.unescape(answer)}
         </button>
       ))}
     </div>
