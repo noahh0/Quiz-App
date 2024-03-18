@@ -10,7 +10,7 @@ function MainContent() {
 
   // Renders the quiz, options, or results page as needed
   return (
-    <main>
+    <main className="p-8 bg-neutral-200">
       {(() => {
         switch (siteState) {
           case "options":
