@@ -6,13 +6,13 @@ import Footer from "./Footer.tsx";
 // Main App component
 function App() {
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <Header />
       <QuizProvider>
         <MainContent />
       </QuizProvider>
       <Footer />
-    </>
+    </div>
   );
 }
 
