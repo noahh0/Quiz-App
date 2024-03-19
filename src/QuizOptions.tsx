@@ -42,9 +42,9 @@ function QuizOptions() {
   };
 
   return (
-    <div>
-      <form>
-        <label htmlFor="number-questions-field">Number of questions:</label>
+    <div className="sm:w-11/12 md:w-5/6 lg:w-3/4 h-full m-auto grid grid-col justify-center">
+      <form className="w-full h-3/4 grid grid-cols-2 content-around m-auto">
+        <label htmlFor="number-questions-field">Number of questions: </label>
         <input
           type="number"
           name="number-questions-field"
@@ -56,7 +56,7 @@ function QuizOptions() {
           }}
         />
 
-        <label htmlFor="category-field">Category:</label>
+        <label htmlFor="category-field">Category: </label>
         <select
           name="category-field"
           value={category}
@@ -91,7 +91,7 @@ function QuizOptions() {
           <option value="32">Cartoons and Animation</option>
         </select>
 
-        <label htmlFor="difficulty-field">Difficulty:</label>
+        <label htmlFor="difficulty-field">Difficulty: </label>
         <select
           name="difficulty-field"
           value={difficulty}
@@ -105,7 +105,7 @@ function QuizOptions() {
           <option value="hard">Hard</option>
         </select>
 
-        <label htmlFor="type-field">Type:</label>
+        <label htmlFor="type-field">Type: </label>
         <select
           name="type-field"
           value={type}
@@ -118,7 +118,7 @@ function QuizOptions() {
           <option value="boolean">True / False</option>
         </select>
 
-        <label htmlFor="time-per-question-field">Time per Question:</label>
+        <label htmlFor="time-per-question-field">Time per Question: </label>
         <select
           name="time-per-question-field"
           value={time}
@@ -132,16 +132,16 @@ function QuizOptions() {
           <option value="30">30 seconds</option>
           <option value="60">1 minute</option>
         </select>
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            startQuiz();
-          }}
-        >
-          Start Quiz
-        </button>
       </form>
+      <button
+        className="text-xl font-bold bg-slate-50 m-auto p-2 rounded-lg hover:bg-slate-200 border-black border-2"
+        onClick={(e) => {
+          e.preventDefault();
+          startQuiz();
+        }}
+      >
+        Start Quiz
+      </button>
     </div>
   );
 }
