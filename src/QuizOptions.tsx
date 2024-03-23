@@ -48,6 +48,7 @@ function QuizOptions() {
         <input
           type="number"
           name="number-questions-field"
+          className="rounded-lg bg-white p-1"
           min="1"
           max="50"
           value={numberQuestions}
@@ -59,6 +60,7 @@ function QuizOptions() {
         <label htmlFor="category-field">Category: </label>
         <select
           name="category-field"
+          className="rounded-lg bg-white p-1"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
@@ -94,6 +96,7 @@ function QuizOptions() {
         <label htmlFor="difficulty-field">Difficulty: </label>
         <select
           name="difficulty-field"
+          className="rounded-lg bg-white p-1"
           value={difficulty}
           onChange={(e) => {
             setDifficulty(e.target.value);
@@ -108,6 +111,7 @@ function QuizOptions() {
         <label htmlFor="type-field">Type: </label>
         <select
           name="type-field"
+          className="rounded-lg bg-white p-1"
           value={type}
           onChange={(e) => {
             setType(e.target.value);
@@ -121,6 +125,7 @@ function QuizOptions() {
         <label htmlFor="time-per-question-field">Time per Question: </label>
         <select
           name="time-per-question-field"
+          className="rounded-lg bg-white p-1"
           value={time}
           onChange={(e) => {
             setTime(e.target.value);
