@@ -3,7 +3,8 @@ import { QuizContext } from "./QuizContext";
 
 // Page to display final score
 function QuizResults() {
-  const { score, questions } = useContext(QuizContext)!;
+  const { score, questions, setSiteState, setCurrentQuestion, setScore } =
+    useContext(QuizContext)!;
 
   return (
     <div>
@@ -11,8 +12,18 @@ function QuizResults() {
       <p>
         {score}/{questions.length}
       </p>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setCurrentQuestion(0);
+          setScore(0);
+          setSiteState("options");
+        }}
+      >
+        Start New Quiz
+      </button>
     </div>
-  ); // Add button to start a new quiz
+  );
 }
 
 export default QuizResults;
