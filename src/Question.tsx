@@ -9,8 +9,11 @@ function Question() {
   const { questions, currentQuestion } = useContext(QuizContext)!;
 
   return (
-    <div>
-      <p>{he.unescape(questions[currentQuestion].question)}</p>
+    <div className="h-full grid content-around">
+      <p className="text-center h-fit">
+        {currentQuestion + 1}.{"  "}
+        {he.unescape(questions[currentQuestion].question)}
+      </p>
       {questions[currentQuestion].type === "multiple" ? (
         <Answers />
       ) : (

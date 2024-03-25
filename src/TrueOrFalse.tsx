@@ -25,8 +25,9 @@ function TrueOrFalse() {
   };
 
   return (
-    <div>
+    <div className="w-full grid grid-cols-2 p-16">
       <button
+        className="w-full text-l bg-slate-50 p-2 py-8 rounded-lg hover:bg-slate-200 border-black border-2"
         onClick={(e) => {
           e.preventDefault();
           processAnswer("True");
@@ -35,6 +36,7 @@ function TrueOrFalse() {
         True
       </button>
       <button
+        className="w-full text-l bg-slate-50 p-2 rounded-lg hover:bg-slate-200 border-black border-2"
         onClick={(e) => {
           e.preventDefault();
           processAnswer("False");
